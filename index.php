@@ -97,7 +97,8 @@ include './functions/showRootCont.php';
               </div>
             </div>
           </form>
-          <button class="btn btn-primary mr-2" type="button">Upload file</button>
+
+         
           <button class="btn btn-primary" type="button">+</button>
         </nav>
         <!-- End of Topbar -->
