@@ -1,5 +1,7 @@
 <?php
-include './functions/showRootCont.php';
+require './functions/showRootCont.php';
+$path = getPath();
+$files = (getPathContent($path));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +21,7 @@ include './functions/showRootCont.php';
 
   <!-- Custom styles for this template-->
   <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
+  <link href="assets/css/custom.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -38,26 +41,11 @@ include './functions/showRootCont.php';
       <!-- Divider -->
       <hr class="sidebar-divider" />
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span></span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">FOLDER NAME</h6>
-            <a class="collapse-item" href="">This must be a file</a>
-            <a class="collapse-item" href="">This must be a file</a>
-            <a class="collapse-item" href="">This must be a file</a>
-          </div>
-        </div>
-      </li> -->
-
-      <!-- Divider -->
-      <!-- <hr class="sidebar-divider d-none d-md-block" /> -->
-      <?php showRootContent() ?>
-
+      <!-- Nav Items - Folders -->
+      <?php
+      echo (renderOnlyFolders($files));
+      ?>
+      <!-- End of Nav Items - Folders -->
     </ul>
     <!-- End of Sidebar -->
 
@@ -97,6 +85,7 @@ include './functions/showRootCont.php';
               </div>
             </div>
           </form>
+
           <button class="btn btn-primary mr-2" type="button">Upload file</button>
           <button class="btn btn-primary" type="button">+</button>
         </nav>
@@ -117,39 +106,30 @@ include './functions/showRootCont.php';
                       d-flex
                       flex-row
                       align-items-center
-                      justify-content-between
+                      w-100
                     ">
-                  <h6 class="m-0 font-weight-bold text-primary">
+                  <h6 class="m-0 font-weight-bold text-primary w-40">
                     File Name
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Creation date
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Last Modified
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Size
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Extension
                   </h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <div class="d-flex w-100 justify-content-between">
-                      <span class="d-flex">
-                        <i class="fas fa-fw fa-folder mr-1"></i>
-                        <p>FolderName</p>
-                        <i class="bi bi-alarm-fill"></i>
-                      </span>
-                      <p>01/01/2021</p>
-                      <p>05/01/2021</p>
-                      <p>54kb</p>
-                      <p>Folder</p>
-                      <i class="fas fa bi bi-pencil"></i>
-                    </div>
+                    <?php
+                    echo (renderAllContent($files));
+                    ?>
                   </div>
                 </div>
               </div>
