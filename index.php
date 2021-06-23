@@ -19,6 +19,7 @@ include './functions/showRootCont.php';
 
   <!-- Custom styles for this template-->
   <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
+
 </head>
 
 <body id="page-top">
@@ -97,7 +98,12 @@ include './functions/showRootCont.php';
               </div>
             </div>
           </form>
-          <button class="btn btn-primary mr-2" type="button">Upload file</button>
+           
+            
+            <button type="button" class="btn btn-primary mr-2">
+              Upload Files
+            </button>
+            
           <button class="btn btn-primary" type="button">+</button>
         </nav>
         <!-- End of Topbar -->
