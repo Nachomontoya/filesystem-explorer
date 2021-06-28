@@ -91,7 +91,6 @@ function getExtension($file)
 
 function renderAllContent($files)
 {
-    var_dump($files);
     foreach ($files as $file) {
         echo "<div class='d-flex w-100 justify-content-between'>";
         echo "<span class='d-flex w-40 pr-4'>";
