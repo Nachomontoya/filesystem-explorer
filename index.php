@@ -1,8 +1,13 @@
 <?php
 require './functions/showRootCont.php';
-$path = getPath();
-$files = (getPathContent($path));
+
+$rootPath = getRootPath();
+$currentPath = "./";
+$rootFiles = getPathContent($rootPath);
+$currentPathFiles = getPathContent($currentPath);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +48,7 @@ $files = (getPathContent($path));
 
       <!-- Nav Items - Folders -->
       <?php
-      echo (renderOnlyFolders($files));
+      echo (renderOnlyFolders($rootFiles));
       ?>
       <!-- End of Nav Items - Folders -->
     </ul>
@@ -125,10 +130,10 @@ $files = (getPathContent($path));
                   </h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body main-content">
                   <div class="chart-area">
                     <?php
-                    echo (renderAllContent($files));
+                    echo (renderAllContent($currentPathFiles));
                     ?>
                   </div>
                 </div>

@@ -37,3 +37,13 @@
   width: 45%;
   max-width: 45%;
 }
+
+.btn-link {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.main-content {
+  height: 82vh;
+  overflow: auto;
+}

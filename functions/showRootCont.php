@@ -1,6 +1,6 @@
 <?php
 
-function getPath()
+function getRootPath()
 {
     getcwd();
     chdir("root");
@@ -23,19 +23,27 @@ function getPathContent($path)
 
 function renderOnlyFolders($files)
 {
+    echo '<li class="nav-item">';
+    echo "<form action='form.php' method='post' >";
+    // echo "<a class='nav-link collapsed' href='root/'>";
+    echo "<button type='submit' name='home' class='pl-4 nav-link btn-link collapsed' value='root'/'>";
+    echo '<i class="fas fa-home"></i>';
+    echo "Home";
+    echo "</button>";
+    // echo '<span>' . "Home" . '</span>';
+    // echo '</a>';
+    echo "</form>";
     foreach ($files as $file) {
         if (is_dir($file)) {
-            echo '<li class="nav-item">';
-            echo "<a class='nav-link collapsed' href='$file'>";
+            echo "<a class='pl-4 nav-link collapsed' href='$file'>";
             echo '<i class="fas fa-fw fa-folder"></i>';
             echo '<span>' . $file . '</span>';
             echo '</a>';
-            echo '</li>';
-
-            //    Divider
-            echo '<hr class="sidebar-divider d-none d-md-block" />';
         }
     }
+    echo '</li>';
+    //    Divider
+    echo '<hr class="sidebar-divider d-none d-md-block" />';
 }
 
 function getCreationDate($file)
@@ -65,8 +73,9 @@ function getSize($file)
         } elseif ($fileSize >= 1073741824) {
             $result = number_format($fileSize / 1073741824, 2);
             return $result . "GB";
+        } else {
+            return "--";
         }
-        return "--";
     }
 }
 
