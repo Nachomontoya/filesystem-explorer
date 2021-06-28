@@ -1,6 +1,10 @@
 <?php
-include './functions/showRootCont.php';
+// session_start();
+require './functions/showRootCont.php';
+
+$rootPath = getRootPath();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +23,7 @@ include './functions/showRootCont.php';
 
   <!-- Custom styles for this template-->
   <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
-
+  <link href="assets/css/custom.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -39,26 +43,12 @@ include './functions/showRootCont.php';
       <!-- Divider -->
       <hr class="sidebar-divider" />
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span></span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">FOLDER NAME</h6>
-            <a class="collapse-item" href="">This must be a file</a>
-            <a class="collapse-item" href="">This must be a file</a>
-            <a class="collapse-item" href="">This must be a file</a>
-          </div>
-        </div>
-      </li> -->
-
-      <!-- Divider -->
-      <!-- <hr class="sidebar-divider d-none d-md-block" /> -->
-      <?php showRootContent() ?>
-
+      <!-- Nav Items - Folders -->
+      <?php
+      $rootFiles = getPathContent($rootPath);
+      echo (renderOnlyFolders($rootFiles));
+      ?>
+      <!-- End of Nav Items - Folders -->
     </ul>
     <!-- End of Sidebar -->
 
@@ -89,7 +79,7 @@ include './functions/showRootCont.php';
                 navbar-search
                 
               ">
-            <div class="input-group">
+            <div class="input-group w-40">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
@@ -98,13 +88,12 @@ include './functions/showRootCont.php';
               </div>
             </div>
           </form>
-           
-            
-            <button type="button" class="btn btn-primary mr-2">
-              Upload Files
-            </button>
-            
-            <button class="btn btn-primary" type="button">+</button>
+
+          <form action="./functions/upload.php" method="POST" enctype="multipart/form-data">
+          <input class="btn btn-primary mr-2" type="file" name='file' />
+          <button class="btn btn-primary" type="submit">Cargar Archivo</button>
+          </form>
+          
         </nav>
         <!-- End of Topbar -->
 
@@ -142,20 +131,17 @@ include './functions/showRootCont.php';
                   </h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body main-content">
                   <div class="chart-area">
-                    <div class="d-flex w-100 justify-content-between">
-                      <span class="d-flex">
-                        <i class="fas fa-fw fa-folder mr-1"></i>
-                        <p>FolderName</p>
-                        <i class="bi bi-alarm-fill"></i>
-                      </span>
-                      <p>01/01/2021</p>
-                      <p>05/01/2021</p>
-                      <p>54kb</p>
-                      <p>Folder</p>
-                      <i class="fas fa bi bi-pencil"></i>
-                    </div>
+                    <?php
+                    $currentPath = $_SESSION['path'];
+                    if (isset($currentPath)) {
+                      $currentPathFiles = getPathContent($currentPath);
+                    } else {
+                      $currentPathFiles = getPathContent($rootPath);
+                    }
+                    echo (renderAllContent($currentPathFiles));
+                    ?>
                   </div>
                 </div>
               </div>
