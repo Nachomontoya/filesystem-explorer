@@ -1,8 +1,10 @@
 <?php
 require './functions/showRootCont.php';
-$path = getPath();
-$files = (getPathContent($path));
+session_start();
+
+$rootPath = getRootPath();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +45,8 @@ $files = (getPathContent($path));
 
       <!-- Nav Items - Folders -->
       <?php
-      echo (renderOnlyFolders($files));
+      $rootFiles = getPathContent($rootPath);
+      echo (renderOnlyFolders($rootFiles));
       ?>
       <!-- End of Nav Items - Folders -->
     </ul>
@@ -111,27 +114,33 @@ $files = (getPathContent($path));
                       align-items-center
                       w-100
                     ">
-                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-40">
+                  <h6 class="m-0 font-weight-bold text-primary w-40">
                     File Name
                   </h6>
-                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Creation date
                   </h6>
-                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Last Modified
                   </h6>
-                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Size
                   </h6>
-                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary w-15">
                     Extension
                   </h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body main-content">
                   <div class="chart-area">
                     <?php
-                    echo (renderAllContent($files));
+                    $currentPath = $_SESSION['path'];
+                    if (isset($currentPath)) {
+                      $currentPathFiles = getPathContent($currentPath);
+                    } else {
+                      $currentPathFiles = getPathContent($rootPath);
+                    }
+                    echo (renderAllContent($currentPathFiles));
                     ?>
                   </div>
                 </div>
