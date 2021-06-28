@@ -1,3 +1,6 @@
 <?php
+session_start();
 
-echo "hello";
+$path = $_POST['path'];
+$_SESSION['path'] = $path;
+header('Location: ./');

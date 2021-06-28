@@ -1,11 +1,8 @@
 <?php
 require './functions/showRootCont.php';
+session_start();
 
 $rootPath = getRootPath();
-$currentPath = "./";
-$rootFiles = getPathContent($rootPath);
-$currentPathFiles = getPathContent($currentPath);
-
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +45,7 @@ $currentPathFiles = getPathContent($currentPath);
 
       <!-- Nav Items - Folders -->
       <?php
+      $rootFiles = getPathContent($rootPath);
       echo (renderOnlyFolders($rootFiles));
       ?>
       <!-- End of Nav Items - Folders -->
@@ -133,6 +131,12 @@ $currentPathFiles = getPathContent($currentPath);
                 <div class="card-body main-content">
                   <div class="chart-area">
                     <?php
+                    $currentPath = $_SESSION['path'];
+                    if (isset($currentPath)) {
+                      $currentPathFiles = getPathContent($currentPath);
+                    } else {
+                      $currentPathFiles = getPathContent($rootPath);
+                    }
                     echo (renderAllContent($currentPathFiles));
                     ?>
                   </div>

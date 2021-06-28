@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function getRootPath()
 {
@@ -25,20 +26,18 @@ function renderOnlyFolders($files)
 {
     echo '<li class="nav-item">';
     echo "<form action='form.php' method='post' >";
-    // echo "<a class='nav-link collapsed' href='root/'>";
-    echo "<button type='submit' name='home' class='pl-4 nav-link btn-link collapsed' value='root'/'>";
+    echo "<button type='submit' name='home' class='pl-4 nav-link btn-link collapsed' value='./'/'>";
     echo '<i class="fas fa-home"></i>';
     echo "Home";
     echo "</button>";
-    // echo '<span>' . "Home" . '</span>';
-    // echo '</a>';
     echo "</form>";
     foreach ($files as $file) {
         if (is_dir($file)) {
-            echo "<a class='pl-4 nav-link collapsed' href='$file'>";
-            echo '<i class="fas fa-fw fa-folder"></i>';
-            echo '<span>' . $file . '</span>';
-            echo '</a>';
+            echo "<form action='form.php' method='post'>";
+            echo "<button type='submit' name='path' class='pl-4 nav-link btn-link collapsed' value='$file'/'>";
+            echo '<i class="fas fa-folder"></i>';
+            echo "$file";
+            echo "</button>";
         }
     }
     echo '</li>';
@@ -92,6 +91,7 @@ function getExtension($file)
 
 function renderAllContent($files)
 {
+    var_dump($files);
     foreach ($files as $file) {
         echo "<div class='d-flex w-100 justify-content-between'>";
         echo "<span class='d-flex w-40 pr-4'>";
