@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-function getPath()
+function getRootPath()
 {
     getcwd();
     chdir("root");
@@ -23,19 +24,25 @@ function getPathContent($path)
 
 function renderOnlyFolders($files)
 {
+    echo '<li class="nav-item">';
+    echo "<form action='form.php' method='post' >";
+    echo "<button type='submit' name='home' class='pl-4 nav-link btn-link collapsed' value='./'/'>";
+    echo '<i class="fas fa-home"></i>';
+    echo "Home";
+    echo "</button>";
+    echo "</form>";
     foreach ($files as $file) {
         if (is_dir($file)) {
-            echo '<li class="nav-item">';
-            echo "<a class='nav-link collapsed' href='$file'>";
-            echo '<i class="fas fa-fw fa-folder"></i>';
-            echo '<span>' . $file . '</span>';
-            echo '</a>';
-            echo '</li>';
-
-            //    Divider
-            echo '<hr class="sidebar-divider d-none d-md-block" />';
+            echo "<form action='form.php' method='post'>";
+            echo "<button type='submit' name='path' class='pl-4 nav-link btn-link collapsed' value='$file'/'>";
+            echo '<i class="fas fa-folder"></i>';
+            echo "$file";
+            echo "</button>";
         }
     }
+    echo '</li>';
+    //    Divider
+    echo '<hr class="sidebar-divider d-none d-md-block" />';
 }
 
 function getCreationDate($file)
@@ -65,8 +72,9 @@ function getSize($file)
         } elseif ($fileSize >= 1073741824) {
             $result = number_format($fileSize / 1073741824, 2);
             return $result . "GB";
+        } else {
+            return "--";
         }
-        return "--";
     }
 }
 
@@ -83,6 +91,7 @@ function getExtension($file)
 
 function renderAllContent($files)
 {
+    var_dump($files);
     foreach ($files as $file) {
         echo "<div class='d-flex w-100 justify-content-between'>";
         echo "<span class='d-flex w-40 pr-4'>";
