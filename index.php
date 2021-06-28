@@ -86,8 +86,11 @@ $files = (getPathContent($path));
             </div>
           </form>
 
-          <button class="btn btn-primary mr-2" type="button">Upload file</button>
-          <button class="btn btn-primary" type="button">+</button>
+          <form action="./functions/upload.php" method="POST" enctype="multipart/form-data">
+          <input class="btn btn-primary mr-2" type="file" name='file' />
+          <button class="btn btn-primary" type="submit">Cargar Archivo</button>
+          </form>
+          
         </nav>
         <!-- End of Topbar -->
 
@@ -108,19 +111,19 @@ $files = (getPathContent($path));
                       align-items-center
                       w-100
                     ">
-                  <h6 class="m-0 font-weight-bold text-primary w-40">
+                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-40">
                     File Name
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
                     Creation date
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
                     Last Modified
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
                     Size
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="ml-5 mr-5 font-weight-bold text-primary w-15">
                     Extension
                   </h6>
                 </div>
