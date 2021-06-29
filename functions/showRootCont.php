@@ -111,7 +111,7 @@ function renderAllContent($files)
         echo "<p class='mb-0 w-100'>";
         echo getExtension($file);
         echo "</p>";
-        echo "<i class='fas fa-trash'></i>";
+        echo '<i class="fas fa-trash"></i>';
         echo "</span>";
         echo "</div>";
         echo '<hr class="sidebar-divider d-none d-md-block" />';

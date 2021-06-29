@@ -1,15 +1,19 @@
 <?php
-
+session_start();
 $file = $_FILES['file'];
 $fileName = $file['name'];
 $fileType = $file['type'];
-$root = '../root';
-if(!is_dir('../root')){
-    opendir('../root',0777);
+$rootPath = '../root';
+$currentPath = $_SESSION['path'];
+
+
+if($currentPath == NULL){
+    move_uploaded_file($file['tmp_name'],"$rootPath/$fileName");
 }else{
-    opendir('../root',0777);
-    move_uploaded_file($file['tmp_name'],"$root/$fileName");
+    chdir($rootPath.'/'.$currentPath);
+    $actualPath = getcwd();
+    move_uploaded_file($file['tmp_name'],"$actualPath/$fileName");
 }
-header('Location: ../index.php');
+header("Location: ../index.php");
 
 
