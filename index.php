@@ -1,8 +1,9 @@
 <?php
-// session_start();
 require './functions/showRootCont.php';
 
 $rootPath = getRootPath();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -136,11 +137,14 @@ $rootPath = getRootPath();
                     <?php
                     $currentPath = $_SESSION['path'];
                     if (isset($currentPath)) {
-                      $currentPathFiles = getPathContent($currentPath);
+                      chdir($currentPath);
+                      $actualPath = getcwd();                      
+                      $currentPathFiles = getPathContent($actualPath);
+                      $_SESSION['path'] = $actualPath;
                     } else {
                       $currentPathFiles = getPathContent($rootPath);
                     }
-                    echo (renderAllContent($currentPathFiles));
+                    renderAllContent($currentPathFiles);
                     ?>
                   </div>
                 </div>
