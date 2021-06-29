@@ -15,6 +15,6 @@ if($currentPath == NULL){
     echo $actualPath;
     move_uploaded_file($file['tmp_name'],"$actualPath/$fileName");
 }
-// header("Location: ../index.php");
+header("Location: ../index.php");
 
 
