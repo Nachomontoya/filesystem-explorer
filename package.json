@@ -36,7 +36,7 @@
         "bootstrap-icons": "^1.5.0",
         "chart.js": "2.9.4",
         "datatables.net-bs4": "1.10.24",
-        "jquery": "3.6.0",
+        "jquery": "^3.6.0",
         "jquery.easing": "^1.4.1"
     },
     "devDependencies": {

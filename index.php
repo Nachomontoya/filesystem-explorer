@@ -90,9 +90,13 @@ $rootPath = getRootPath();
             </div>
           </form>
 
+          <form action="./functions/createFolder.php">
+            <button class="btn btn-primary" type="submit">+</button>
+          </form>
+
           <form action="./functions/upload.php" method="POST" enctype="multipart/form-data">
           <input class="btn btn-primary mr-2" type="file" name='file' />
-          <button class="btn btn-primary" type="submit">Cargar Archivo</button>
+          <button class="btn btn-primary" type="submit">File upload</button>
           </form>
           
         </nav>
