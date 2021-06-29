@@ -1,8 +1,8 @@
 <?php
-// session_start();
 require './functions/showRootCont.php';
 
 $rootPath = getRootPath();
+
 
 ?>
 
