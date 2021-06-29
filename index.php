@@ -1,6 +1,6 @@
 <?php
+// session_start();
 require './functions/showRootCont.php';
-session_start();
 
 $rootPath = getRootPath();
 
@@ -80,7 +80,7 @@ $rootPath = getRootPath();
                 navbar-search
                 
               ">
-            <div class="input-group">
+            <div class="input-group w-40">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
@@ -113,21 +113,21 @@ $rootPath = getRootPath();
                       d-flex
                       flex-row
                       align-items-center
-                      w-100
+                      justify-content-between
                     ">
-                  <h6 class="m-0 font-weight-bold text-primary w-40">
+                  <h6 class="m-0 font-weight-bold text-primary">
                     File Name
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary">
                     Creation date
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary">
                     Last Modified
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary">
                     Size
                   </h6>
-                  <h6 class="m-0 font-weight-bold text-primary w-15">
+                  <h6 class="m-0 font-weight-bold text-primary">
                     Extension
                   </h6>
                 </div>
