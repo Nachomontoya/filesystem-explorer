@@ -9,11 +9,13 @@ $currentPath = $_SESSION['path'];
 
 if($currentPath == NULL){
     move_uploaded_file($file['tmp_name'],"$rootPath/$fileName");
+    echo $currentPath;
 }else{
     chdir($rootPath.'/'.$currentPath);
     $actualPath = getcwd();
+    echo $actualPath;
     move_uploaded_file($file['tmp_name'],"$actualPath/$fileName");
 }
-header("Location: ../index.php");
+// header("Location: ../index.php");
 
 
