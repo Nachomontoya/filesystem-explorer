@@ -2,14 +2,16 @@
 session_start();
 $file = $_FILES['file'];
 $fileName = $file['name'];
-$fileType = $file['type'];
+// $fileType = $file['type'];
 $rootPath = '../root';
 $currentPath = $_SESSION['path'];
 
 if($currentPath == NULL){
     move_uploaded_file($file['tmp_name'],"$rootPath/$fileName");
-    echo $currentPath;
+    // echo $currentPath;
 }else{
+    getcwd();
+    chdir('../root');
     chdir($currentPath);
     $actualPath = getcwd();
     move_uploaded_file($file['tmp_name'],"$actualPath/$fileName");

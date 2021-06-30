@@ -1,9 +1,15 @@
 <?php
 require './functions/showRootCont.php';
 
+function getRootPath()
+{
+    getcwd();
+    chdir("./root");
+    return getcwd();
+}
+
 $rootPath = getRootPath();
-
-
+// header('Location: ./functions/showRootCont.php');
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +53,7 @@ $rootPath = getRootPath();
       <!-- Nav Items - Folders -->
       <?php
       $rootFiles = getPathContent($rootPath);
-      echo (renderOnlyFolders($rootFiles));
+      renderOnlyFolders($rootFiles);
       ?>
       <!-- End of Nav Items - Folders -->
     </ul>
@@ -92,7 +98,7 @@ $rootPath = getRootPath();
 
           <form action="./functions/upload.php" method="POST" enctype="multipart/form-data">
           <input class="btn btn-primary mr-2" type="file" name='file' />
-          <button class="btn btn-primary" type="submit">Cargar Archivo</button>
+          <button class="btn btn-primary" type="submit">Upload File</button>
           </form>
           
         </nav>
@@ -135,12 +141,13 @@ $rootPath = getRootPath();
                 <div class="card-body main-content">
                   <div class="chart-area">
                     <?php
-                    $currentPath = $_SESSION['path'];
-                    if (isset($currentPath)) {
-                      chdir($currentPath);
-                      $actualPath = getcwd();                      
-                      $currentPathFiles = getPathContent($actualPath);
-                      $_SESSION['path'] = $actualPath;
+                    if (isset($_SESSION['path'])) {
+                      $endPoint = $_SESSION['path'];
+                      // getcwd(); 
+                      // chdir($endPoint);
+                      // $actualPath = getcwd();
+                      $currentPathFiles = getPathContent($rootPath . "/" .  $endPoint);
+                      // $_SESSION['path'] = "";
                     } else {
                       $currentPathFiles = getPathContent($rootPath);
                     }

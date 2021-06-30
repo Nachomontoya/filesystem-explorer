@@ -1,6 +1,12 @@
 <?php
 session_start();
 
-$path = $_POST['path'];
-$_SESSION['path'] = $path;
-header('Location: ./'); 
+$endPoint = $_POST['path'];
+// $_SESSION['path'] = $endPoint;
+if (isset($_SESSION['path'])) {
+  // $_SESSION['path'] .= "/" . $endPoint;
+  $_SESSION['path'] = $endPoint;
+} else {
+  $_SESSION['path'] = $endPoint;
+}
+header('Location: ./');

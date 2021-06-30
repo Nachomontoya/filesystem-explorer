@@ -1,16 +1,10 @@
 <?php
 session_start();
 
-function getRootPath()
-{
-    getcwd();
-    chdir("root");
-    return getcwd() . "/";
-}
-
 function getPathContent($path)
 {
     $files = array();
+    var_dump($path);
     if ($gestor = opendir($path)) {
         while ($archivo = readdir($gestor)) {
             if ($archivo != '.' && $archivo != '..' && $archivo != '.DS_Store') {
@@ -38,6 +32,7 @@ function renderOnlyFolders($files)
             echo '<i class="fas fa-folder"></i>';
             echo "$file";
             echo "</button>";
+            echo "</form>";
         }
     }
     echo '</li>';
@@ -90,12 +85,28 @@ function getExtension($file)
 }
 
 function renderAllContent($files)
-{
+{   
     foreach ($files as $file) {
+        $pathSession = $_SESSION['path'];
+        $baseName = basename($pathSession);
+        $pathFile = "root" . "/" .$baseName . "/" . $file;
+        // $pathFolder = $baseName . "/" . $file;
+
         echo "<div class='d-flex w-100 justify-content-between'>";
         echo "<span class='d-flex w-40 pr-4'>";
-        echo "<i class='fas fa-fw fa-folder mr-2 '></i>";
-        echo "<p class='w-100 mb-0'>" . $file . "</p>";
+        if (is_file($file)) {
+            echo "<i class='fas fa-fw fa-folder mr-2 '></i>";
+            echo "<a class='w-100 mb-0' href='$pathFile'>" . $file . "</a>";
+        }   else {
+            // echo "<i class='fas fa-fw fa-folder mr-2 '></i>";
+            // echo "<a class='w-100 mb-0' href='$pathFile'>" . $file . "</a>";
+            echo "<form action='form.php' method='post'>";
+            echo "<button type='submit' name='path' class='w-100 mb-0' value='$file'/'>";
+            echo '<i class="fas fa-folder"></i>';
+            echo "$file";
+            echo "</button>";
+            echo "</form>";
+        }
         echo "<i class='far fa-edit text-right'></i>";
         echo "</span>";
         echo "<p class='w-15 mb-0'>";
