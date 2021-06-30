@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
 require './functions/showRootCont.php';
 
 $rootPath = getRootPath();
@@ -25,6 +26,9 @@ $rootPath = getRootPath();
   <!-- Custom styles for this template-->
   <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
   <link href="assets/css/custom.css" rel="stylesheet" />
+  <link href="assets/css/content.css" rel="stylesheet" />
+
+ 
 </head>
 
 <body id="page-top">
@@ -89,16 +93,32 @@ $rootPath = getRootPath();
               </div>
             </div>
           </form>
-
-          <form action="./functions/createFolder.php">
-            <button class="btn btn-primary" type="submit">+</button>
+          <div class='d-flex'>
+          <form action="">
+            <button class="btn btn-primary mr-2" id='createFolder' type="button">+</button>
           </form>
+
+          <!--Modal-->
+          <div class='modal-container show' id='modal-container'></div>
+            <div class='createFolderModal show' id='createFolderModal'>
+              <h1>Create New Folder</h1>
+              </hr> 
+              </br>
+              <form action='functions/createFolder.php' method='post'>
+              <input type="text" class="form-control" name='createFolderInput' id="createFolderInput" aria-describedby="NameOfFolder" placeholder="Enter the name for the new folder">
+              </br>
+              <button class='btn btn-dark' id='closeModal'>Close</button>
+              <button class='btn btn-primary' type='submit' id='create'>Create Folder</button>
+              </form>
+            </div>
+          
+
 
           <form action="./functions/upload.php" method="POST" enctype="multipart/form-data">
-          <input class="btn btn-primary mr-2" type="file" name='file' />
-          <button class="btn btn-primary" type="submit">File upload</button>
+            <label for='file' class='btn btn-primary'>Upload Files</label>
+            <input class="hidden" type="file" name='file' id='file' onchange="form.submit()" />
           </form>
-          
+          </div>
         </nav>
         <!-- End of Topbar -->
 
@@ -194,6 +214,8 @@ $rootPath = getRootPath();
         </div>
       </div>
     </div>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+<script src='functions/createFolder.js'></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
-
-</html>
+</html>   
