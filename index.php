@@ -98,7 +98,7 @@ $rootPath = getRootPath();
             <button class="btn btn-primary mr-2" id='createFolder' type="button">+</button>
           </form>
 
-          <!--Modal-->
+          <!--Modal Create Folder-->
           <div class='modal-container show' id='modal-container'></div>
             <div class='createFolderModal show' id='createFolderModal'>
               <h1>Create New Folder</h1>
@@ -110,8 +110,23 @@ $rootPath = getRootPath();
               <button class='btn btn-dark' id='closeModal'>Close</button>
               <button class='btn btn-primary' type='submit' id='create'>Create Folder</button>
               </form>
-            </div>
-          
+              </div>
+
+               <!--Modal Rename Files-->
+               <div class='modal-container show' id='modal-container-2'></div>
+                <div class='renameFileModal show' id='renameFileModal'>
+                  <h1>Rename This File</h1>
+                  </hr> 
+                  </br>
+                  <form action='functions/renameFiles.php' method='post'>
+                  <input type="text" class="form-control" name='renameFileInput' id="renameFileInput" aria-describedby="NameOfFile" placeholder="Enter the new name for this file">
+                  </br>
+                  <input type="text" class="hidden" id='oldNames' name='oldNames' readonly/>
+                  <button class='btn btn-dark' type='button' id='closeModal-2'>Close</button>
+                  <button class='btn btn-primary' type='submit' id='rename'>Rename File</button>
+                  </form>
+                </div>
+        
 
 
           <form action="./functions/upload.php" method="POST" enctype="multipart/form-data">
@@ -216,6 +231,7 @@ $rootPath = getRootPath();
     </div>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 <script src='functions/createFolder.js'></script>
+<script src='functions/renameFiles.js'></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
 </html>   

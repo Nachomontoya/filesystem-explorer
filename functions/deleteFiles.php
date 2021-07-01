@@ -13,8 +13,8 @@ $file =$_POST["trash"];
         $actualPath = getcwd();
         $pathAndFile = $actualPath. "\\" .$file;
 
-        if(file_exists($pathAndFile)){
-            unlink($pathAndFile);
+        if(file_exists($file)){
+            unlink($file);
         }else{
             echo 'El archivo no existe';
         }
@@ -24,13 +24,17 @@ $file =$_POST["trash"];
         $actualPath = getcwd();
         $pathAndFile = $actualPath. "\\" .$file;
         
-        if(file_exists($pathAndFile)){
-            unlink($pathAndFile);
-            
+        if(file_exists($file)){
+            unlink($file);
         }else{
             echo 'El archivo no existe';
         }
 
     }
 
+    if(is_dir($pathAndFile)){
+        rmdir($pathAndFile);
+    }else{
+        'Esto no es una carpeta';
+    }
 header('Location: ../index.php');

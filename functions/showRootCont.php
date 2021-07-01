@@ -96,7 +96,11 @@ function renderAllContent($files)
         echo "<span class='d-flex w-40 pr-4'>";
         echo "<i class='fas fa-fw fa-folder mr-2 '></i>";
         echo "<p class='w-100 mb-0'>" . $file . "</p>";
-        echo "<i class='far fa-edit text-right'></i>";
+
+        echo "<form action='' method='POST'>";
+        echo "<button class='bg-white border-0 rename' value='$file' name='rename' type='button' id='renameFileButton'><i class='far fa-edit text-right'></i></button>";
+        echo '</form>';
+
         echo "</span>";
         echo "<p class='w-15 mb-0'>";
         echo getCreationDate($file);
@@ -111,9 +115,11 @@ function renderAllContent($files)
         echo "<p class='mb-0 w-100'>";
         echo getExtension($file);
         echo "</p>";
+
         echo "<form action='functions/deleteFiles.php' method='POST'>";
         echo '<button class="bg-white border-0" value='.$file.' name="trash"><i class="fas fa-trash"></i></button>';
         echo '</form>';
+
         echo "</span>";
         echo "</div>";
         echo '<hr class="sidebar-divider d-none d-md-block" />';

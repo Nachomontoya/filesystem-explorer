@@ -29,6 +29,20 @@
   text-align: center;
   z-index: 3;
 }
+.renameFileModal {
+  background-color: #ffffff;
+  top: calc(50% - 150px);
+  left: calc(50% - 300px);
+  opacity: 1;
+  width: 600px;
+  height: 300px;
+  padding: 30px 50px;
+  position: fixed;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 3;
+}
 
 .hidden {
   display: none;

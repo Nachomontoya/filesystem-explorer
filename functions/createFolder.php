@@ -25,5 +25,4 @@ if($currentPath == NULL){
 }
 header('Location: ../index.php');
 ?>
-</body>
-</html>
+
