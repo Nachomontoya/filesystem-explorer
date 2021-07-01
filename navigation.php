@@ -1,4 +1,6 @@
 <?php
+session_start();
 
-echo $_GET['path'];
+$path = $_GET['dir'];
+$_SESSION['dir'] = $path;
 header('Location: ./');
