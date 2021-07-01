@@ -111,7 +111,9 @@ function renderAllContent($files)
         echo "<p class='mb-0 w-100'>";
         echo getExtension($file);
         echo "</p>";
-        echo '<i class="fas fa-trash"></i>';
+        echo "<form action='functions/deleteFiles.php' method='POST'>";
+        echo '<button class="bg-white border-0" value='.$file.' name="trash"><i class="fas fa-trash"></i></button>';
+        echo '</form>';
         echo "</span>";
         echo "</div>";
         echo '<hr class="sidebar-divider d-none d-md-block" />';

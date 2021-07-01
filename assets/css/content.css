@@ -1,35 +1,38 @@
-.modal-container{
-    display:flex;
-    background-color: #3B3B3B;
-    align-items: center;
-    justify-content: center;
-    position:fixed;
-    pointer-events: none;
-    opacity: 0.7;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 2;
+.modal-container {
+  display: flex;
+  background-color: #3b3b3b;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
 }
-.show{
-    display: none;
+.show {
+  display: none;
 }
-.createFolderModal{
-    background-color: #ffffff;
-    top: calc(50% - 150px);
-    left: calc(50% - 300px);
-    opacity:1;
-    width: 600px;
-    height: 300px;
-    padding:30px 50px;
-    position:fixed;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    text-align: center;
-    z-index: 3;
+.createFolderModal {
+  background-color: #ffffff;
+  top: calc(50% - 150px);
+  left: calc(50% - 300px);
+  opacity: 1;
+  width: 600px;
+  height: 300px;
+  padding: 30px 50px;
+  position: fixed;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 3;
 }
 
-.hidden{
-    display: none
+.hidden {
+  display: none;
+}
+.trash {
+  background-color: whitesmoke;
 }
