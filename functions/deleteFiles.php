@@ -26,10 +26,11 @@ $file =$_POST["trash"];
         
         if(file_exists($pathAndFile)){
             unlink($pathAndFile);
+            
         }else{
             echo 'El archivo no existe';
         }
 
     }
-    
+
 header('Location: ../index.php');
