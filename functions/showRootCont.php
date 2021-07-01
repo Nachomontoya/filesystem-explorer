@@ -87,11 +87,14 @@ function getExtension($file)
 function renderAllContent($files)
 {   
     foreach ($files as $file) {
-        $pathSession = $_SESSION['path'];
-        $baseName = basename($pathSession);
-        $pathFile = "root" . "/" .$baseName . "/" . $file;
-        // $pathFolder = $baseName . "/" . $file;
-
+        if (isset($_SESSION['path'])) {
+            $pathSession = $_SESSION['path'];
+            $baseName = basename($pathSession);
+            $pathFile = "root" . "/" .$baseName . "/" . $file;
+            // $pathFolder = $baseName . "/" . $file;
+        } else {
+            $pathFile = "root"  . "/" . $file;
+        }
         echo "<div class='d-flex w-100 justify-content-between'>";
         echo "<span class='d-flex w-40 pr-4'>";
         if (is_file($file)) {
