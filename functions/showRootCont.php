@@ -4,7 +4,7 @@ session_start();
 function getPathContent($path)
 {
     $files = array();
-    var_dump($path);
+    // var_dump($path);
     if ($gestor = opendir($path)) {
         while ($archivo = readdir($gestor)) {
             if ($archivo != '.' && $archivo != '..' && $archivo != '.DS_Store') {
@@ -91,6 +91,7 @@ function renderAllContent($files)
             $pathSession = $_SESSION['path'];
             $baseName = basename($pathSession);
             $pathFile = "root" . "/" .$baseName . "/" . $file;
+            echo $pathFile;
             // $pathFolder = $baseName . "/" . $file;
         } else {
             $pathFile = "root"  . "/" . $file;
@@ -98,9 +99,11 @@ function renderAllContent($files)
         echo "<div class='d-flex w-100 justify-content-between'>";
         echo "<span class='d-flex w-40 pr-4'>";
         if (is_file($file)) {
+            echo "I'm a file";
             echo "<i class='fas fa-fw fa-folder mr-2 '></i>";
             echo "<a class='w-100 mb-0' href='$pathFile'>" . $file . "</a>";
         }   else {
+            echo "I'm not a file";
             // echo "<i class='fas fa-fw fa-folder mr-2 '></i>";
             // echo "<a class='w-100 mb-0' href='$pathFile'>" . $file . "</a>";
             echo "<form action='form.php' method='post'>";
